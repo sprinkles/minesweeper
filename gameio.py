@@ -39,3 +39,24 @@ def goBoomBigger():
                    `--..#####..--'
     """
     print(bombstring)
+
+#level5.py
+## move(sboard,mboard)
+def move(sboard,mboard):
+    if endOfGame(sboard,mboard)==0: return 2
+    else: pass
+        
+    print("Which square do you wish to uncover?")
+    loc=[int(x) for x in input("Enter a row and column, separated by a space:").split(" ")]
+    
+    if showCell(sboard,mboard,loc): 
+        goBoom() 
+        return 1
+    else: 
+        displayBoard(sboard) 
+        return 0
+
+#game.py #maybe not needed
+def playagain():
+    choice = input('Play again? (y/n): ')
+    return choice.lower() == 'y'
