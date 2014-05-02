@@ -1,4 +1,5 @@
-
+# Level 4
+# Define a "end of game" checking function that, when given a mine board and a status board, returns 0 if all covered squares contain mines and 1 otherwise.
 import game
 import gameio
 

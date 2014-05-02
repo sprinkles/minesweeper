@@ -65,15 +65,49 @@ def placeBombCount(board):
     for r in range(0,rows):                                                               
         for c in range(0,cols):
             board[r][c]=calcAdj(board,(r,c))
-    #return board[calcAdj(mboard,loc(r,c)) for c in range(cols) for r in range(rows)]
     return board
     
-#level4.py
-#endOfGame(sboard,mboard): 0 if only mines left, else 1
+#level4
+# endOfGame(sboard,mboard): 0 if only mines left, else 1
+# (I'm following a set of requirements) 
 def endOfGame(sboard,mboard):
     """Returns 0 if only mines are left to uncover"""
     if '-' not in [x for row in sboard for x in row]:
         return 0
     else: 
         return 1
+
+def getNeighbors(board,loc):
+    row = loc[0]
+    col = loc[1]
+    rows=len(board)
+    cols=len(board[0])
+    
+    neighbors = []
+ 
+    for i in range(-1,2):
+        for j in range(-1,2):
+            if i == 0 and j == 0: continue
+            elif -1<row+i<rows and -1<col+j<cols:
+                neighbors.append((row+i,col+j))
+    return neighbors
+
+#level3
+def showCell(sboard,mboard,loc):
+    """Returns 1 if bomb, 0 if not"""
+    r=loc[0]
+    c=loc[1]
+    #check endOfGame
+    if(sboard[r][c] != '-'):
+        return 0
+    
+    if(mboard[r][c] == 'B'):
+        return 1
+    
+    sboard[r][c] = mboard[r][c]
+    
+    if(sboard[r][c] == 0):
+        for rr,cc in getNeighbors(sboard,(r,c)):
+            showCell(sboard,mboard,[rr,cc])
+
 

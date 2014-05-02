@@ -1,10 +1,10 @@
 #level2.py
-# 1. print initBoard
-# 2. 
-#import game
-#import gameio
+#At the start, this procedure should just print the word BOOM.
+import game
+import gameio
 
 sboard=createBoard(rows,cols)
 sboard=initBoard(sboard)
+
 goBoom()
 goBoomBigger()
