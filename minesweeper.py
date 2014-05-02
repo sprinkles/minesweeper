@@ -4,8 +4,6 @@
 
 from game import *
 from gameio import *
-#import * from  gameio
-#import gameio
 
 def playGame(sboard,mboard): 
     print('Here we go!')

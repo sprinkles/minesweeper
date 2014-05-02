@@ -4,12 +4,12 @@ import random
 import sys
 
 def createBoard(rows,cols):
-    return [[]*cols for i in range(rows) 
+    return [[]*cols for i in range(rows)]
 
 def initBoard(board):
     rows = len(board)
     cols = len(board[0])
-    return [['-']*cols for i in range(rows) 
+    return [['-']*cols for i in range(rows)]
 
 #level0
 def placeBombs(bombs,board):                                                            
@@ -22,7 +22,6 @@ def placeBombs(bombs,board):
         if (randr,randc) not in mines:                                                                 
             board[randr][randc]='B'
             mines.append((randr,randc))
-            #print(mines)
             bombs-=1
     return mines
 
