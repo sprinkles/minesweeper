@@ -15,7 +15,6 @@ def initBoard(board):
 def placeBombs(bombs,board): 
     rows = len(board)  
     cols = len(board[0])
-    print(rows,cols)
     mines=[]
     while(bombs):
         randr = random.randint(0,rows-1)
@@ -74,10 +73,13 @@ def placeBombCount(board):
 # (I'm following a set of requirements) 
 def endOfGame(sboard,mboard):
     """Returns 0 if only mines are left to uncover"""
-    if '-' not in [x for row in sboard for x in row]:
-        return 0
-    else: 
-        return 1
+    rows = len(sboard) 
+    cols = len(sboard[0])
+    for r in range(0,rows):
+        for c in range(0,cols):
+            if sboard[r][c] == '-' and mboard[r][c] != 'B':
+                return 1
+    return 0
 
 def getNeighbors(board,loc):
     row = loc[0]
@@ -112,4 +114,13 @@ def showCell(sboard,mboard,loc):
         for rr,cc in getNeighbors(sboard,(r,c)):
             showCell(sboard,mboard,[rr,cc])
 
-
+def uncoverBoard(sboard,mboard):
+    rows = len(sboard) 
+    cols = len(sboard[0])
+    for r in range(0,rows):
+        for c in range(0,cols):
+            if sboard[r][c] == '-' and mboard[r][c]!='B':
+                showCell(sboard,mboard,(r,c))
+            else:
+                continue
+    return sboard

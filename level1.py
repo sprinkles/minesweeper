@@ -2,17 +2,12 @@
 # displayBoard(sboard,mboard)
 # compare sboard(loc)=mboard(loc)
 
-import game
-import gameio
+from game import *
+from gameio import *
 
-rows=5
+rows=9
 cols=9
 bombs=10
-
-#rows  = argv[1]
-#cols  = argv[2]
-#bombs = argv[3]
-
 
 sboard=createBoard(rows,cols)
 sboard=initBoard(sboard)

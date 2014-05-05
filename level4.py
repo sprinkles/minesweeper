@@ -1,16 +1,11 @@
 # Level 4
 # Define a "end of game" checking function that, when given a mine board and a status board, returns 0 if all covered squares contain mines and 1 otherwise.
-import game
-import gameio
+from game import *
+from gameio import *
 
-rows=5
+rows=9
 cols=9
 bombs=10
-
-#rows  = argv[1]
-#cols  = argv[2]
-#bombs = argv[3]
-
 
 sboard=createBoard(rows,cols)
 sboard=initBoard(sboard)
@@ -21,3 +16,8 @@ mboard = placeBombCount(mboard)
 #displayBoard(mboard)
 
 displayBoard(sboard)
+print('End of game?',endOfGame(sboard,mboard))
+print('Uncovering...')
+sboard=uncoverBoard(sboard,mboard)
+displayBoard(sboard)
+print('End of game?',endOfGame(sboard,mboard))
