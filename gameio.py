@@ -2,6 +2,9 @@
 # file:gameio.py
 # level:2
 #---
+
+from game import *
+
 def goBoom():
     boomstring = """\
     .  xxxx     xxx    xxx    x     x   xx
@@ -47,8 +50,7 @@ def move(sboard,mboard):
     else: pass
         
     print("Which square do you wish to uncover?")
-    loc=[int(x) for x in input("Enter a row and column, separated by a space:").split(" ")]
-    
+    loc=[int(x) for x in input("Enter a row and column, separated by a space:").split(" ")] 
     if showCell(sboard,mboard,loc): 
         goBoom() 
         return 1

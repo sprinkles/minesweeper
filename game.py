@@ -4,7 +4,7 @@ import random
 import sys
 
 def createBoard(rows,cols):
-    return [[]*cols for i in range(rows)]
+    return [['0']*cols for i in range(rows)]
 
 def initBoard(board):
     rows = len(board)
@@ -12,21 +12,22 @@ def initBoard(board):
     return [['-']*cols for i in range(rows)]
 
 #level0
-def placeBombs(bombs,board):                                                            
-    rows = len(board)                                                                   
-    cols = len(board[0])                                                                
-    mines=[]                                                                             
-    while(bombs):                                                                       
-        randr = random.randint(0,rows-1) 
-        randc = random.randint(0,cols-1)                                                  
-        if (randr,randc) not in mines:                                                                 
+def placeBombs(bombs,board): 
+    rows = len(board)  
+    cols = len(board[0])
+    print(rows,cols)
+    mines=[]
+    while(bombs):
+        randr = random.randint(0,rows-1)
+        randc = random.randint(0,cols-1) 
+        if (randr,randc) not in mines: 
             board[randr][randc]='B'
             mines.append((randr,randc))
             bombs-=1
     return mines
 
 #level0
-def calcAdj(board,loc):                                                                  
+def calcAdj(board,loc):
     row = loc[0]   
     col = loc[1]
     total=0
@@ -45,26 +46,27 @@ def calcAdj(board,loc):
 #level1, but really level0
 def displayBoard(board):
     """Prints the board with indices"""
-    rows = len(board)                                                                   
+    rows = len(board)
     cols = len(board[0])
-    for r in range(-1,rows):                                                               
+    for r in range(-1,rows):
         for c in range(-1,cols):
             if r==c==-1:
                 print(end="   ")
             print(str(c) if r==-1 and c>-1 else '',end=" ")
             print(str(r) if c==-1 and r>-1 else '',end=" ")
             if r>-1 and c>-1:
-                print(board[r][c], end="")                                                
-        print()                                                                         
+                print(board[r][c], end="")
+        print()                                               
     return 
 
 #level0
 def placeBombCount(board):
     rows = len(board) 
     cols = len(board[0])
-    for r in range(0,rows):                                                               
+    for r in range(0,rows):
         for c in range(0,cols):
-            board[r][c]=calcAdj(board,(r,c))
+            if board[r][c] != 'B':
+                board[r][c]=calcAdj(board,(r,c))
     return board
     
 #level4

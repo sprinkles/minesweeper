@@ -33,14 +33,16 @@ def main():
     #allocate boards
     sboard=createBoard(rows,cols)
     sboard=initBoard(sboard)
+    displayBoard(sboard)
     
     mboard=createBoard(rows,cols)
-    mboard=initBoard(mboard)
-    
+    #mboard=initBoard(mboard)
+    displayBoard(mboard)
+
     mines = placeBombs(bombs,mboard)
-    #displayBoard(mboard)
+    displayBoard(mboard)
     mboard = placeBombCount(mboard)
-    #displayBoard(mboard)
+    displayBoard(mboard)
     
     #playgame loop
     playGame(sboard,mboard)
